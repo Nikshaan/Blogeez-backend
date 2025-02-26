@@ -48,6 +48,15 @@ const userSchema = new mongoose.Schema(
                 message: `{VALUE} is not a valid gender type!`,
             }
         },
+        photoUrl: {
+            type: String,
+            default: "https://geographyandyou.com/images/user-profile.png",
+            validate(value) {
+              if (!validator.isURL(value)) {
+                throw new Error("Invalid Photo URL: " + value);
+              }
+            },
+        },
         about: {
             type: String,
             default: "This is my default about!",
