@@ -5,9 +5,15 @@ const profileRouter = require("./routes/profile");
 const blogRouter = require("./routes/blog");
 const app = express();
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
 app.use(express.json());
 app.use(cookieParser());
+
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", blogRouter);
@@ -21,4 +27,4 @@ connectDB()
 })
 .catch((err) => {
     console.error("Database cannot be connected." + err);
-})
+});

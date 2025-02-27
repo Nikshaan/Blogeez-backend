@@ -8,12 +8,15 @@ const blogRouter = express.Router();
 blogRouter.post("/blog/create", userAuth, async (req, res) => {
     try {
     const  userId = req.user._id;
+    const { firstName, lastName } = req.user;
     const { title, content } = req.body;
     
     const blog = new Blog({
         title,
         userId,
         content,
+        firstName,
+        lastName
     });
 
     const data = await blog.save();

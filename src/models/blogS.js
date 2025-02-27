@@ -11,6 +11,16 @@ const blogSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    firstName: {
+        type: String,
+        minLen: 4,
+        maxLen: 50,
+    },
+    lastName: {
+        type: String,
+        minLen: 4,
+        maxLen: 50,
+    },
     content: {
         type: String,
         required: true,
