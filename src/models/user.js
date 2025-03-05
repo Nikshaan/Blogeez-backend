@@ -44,13 +44,14 @@ const userSchema = new mongoose.Schema(
         gender: {
             type: String,
             enum: {
-                values: ["male", "female", "other"],
+                values: ["male", "female", "other", "-"],
                 message: `{VALUE} is not a valid gender type!`,
-            }
+            },
+            default:"-"
         },
         photoUrl: {
             type: String,
-            default: "https://geographyandyou.com/images/user-profile.png",
+            default: "https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2470054311.jpg",
             validate(value) {
               if (!validator.isURL(value)) {
                 throw new Error("Invalid Photo URL: " + value);
