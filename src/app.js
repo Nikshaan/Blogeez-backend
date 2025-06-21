@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const connectDB = require("./config/database");
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
@@ -22,7 +23,7 @@ app.use("/", blogRouter);
 connectDB()
 .then(() => {
     console.log("Database connected.");
-    app.listen(port, () => {
+    app.listen(port, '0.0.0.0', () => {
         console.log("Server is listening to port...");
     });
 })
