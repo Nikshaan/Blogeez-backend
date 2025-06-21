@@ -6,6 +6,7 @@ const blogRouter = require("./routes/blog");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const port = process.env.PORT || 7777;
 
 app.use(cors({
     origin: "http://localhost:5173",
@@ -21,8 +22,8 @@ app.use("/", blogRouter);
 connectDB()
 .then(() => {
     console.log("Database connected.");
-    app.listen(7777, () => {
-        console.log("Server is listening to port 7777...");
+    app.listen(port, () => {
+        console.log("Server is listening to port...");
     });
 })
 .catch((err) => {
