@@ -9,12 +9,14 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const port = process.env.PORT || 7777;
 const allowedOrigins = [
-    "https://blogeez-frontend.vercel.app/",
-    "http://localhost:5173"
+    "https://blogeez-frontend.vercel.app",
+    "http://localhost:5173/"
 ]
 app.use(cors({
     origin: allowedOrigins,
     credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 }));
 app.use(express.json());
 app.use(cookieParser());
